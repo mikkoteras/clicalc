@@ -41,10 +41,14 @@ Parentheses following a function name are mandatory as evaluation rules
 would otherwise become confusing.
 
 The multiplication sign '*' can be omitted when the right hand operand
-is not a number.
+is not a number. The parser will consider anything that looks like a
+function to be such, even when context implies otherwise. That is,
+multiplying 'l' and 'n' can be written as 'l*n', 'l n', 'nl' etc,
+but not "ln" as that always refers to the function, even when not
+followed by an argument list.
 
-Variables can only be referred to only after they have been assigned to
-at least once. Variables can be assigned to multiple times, and can be
+Variables can only be referred to after they have been assigned to at
+least once. Variables can be assigned to multiple times, and can be
 referred to in the right hand expression even when assigning to the
 variable itself; i.e., the following is valid:
 x = 10
@@ -63,6 +67,6 @@ Example input:
 a = 2
 b = -5
 c = 3
-r = (-b + sqrt(b^2 - 4ac)) / (2a)
-s = (-b - sqrt(b^2 - 4ac)) / (2a)"#
+(-b + sqrt(b^2 - 4ac)) / (2a)
+(-b - sqrt(b^2 - 4ac)) / (2a)"#
 }
